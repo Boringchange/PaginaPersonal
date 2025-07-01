@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 61_4</title>
+</head>
+<body>
+<h1>Leer una secuencia de n números almacenarlos en un arreglo y mostrar la posición donde se eneuvntra el mayor valor leido</h1>
+<table border="2" id="tablaMayor">
+    <tr>
+        <td colspan="10">Posición</td>
+    </tr>
+    <tr>
+        <script type="text/javascript">
+            let i;
+            for(i=1; i<11; i++)
+                document.write("<td>"+ i +"</td>");
+        </script>
+    </tr>
+    <tr>
+        <script type="text/javascript">
+
+            var numeros = [];
+
+            for(i=0; i<10; i++)
+                numeros[i] = Math.floor(Math.random() * 11);
+
+            for(i=0; i<10; i++)
+                document.write("<td>"+ numeros[i] +"</td>");
+        </script>
+    </tr>
+    <tr>
+        <td colspan="5">
+            <button onclick="mostrarResultado()">Mostrar posición del <br> número con mayor valor</button>
+        </td>
+        <td colspan="5">
+            <button onclick="location.reload()">Reiniciar</button>
+        </td>
+    </tr>
+</table>
+<script type="text/javascript">
+    function mostrarResultado()
+    {
+        let tabla = document.getElementById("tablaMayor");
+        let posicionFinal = 0;
+        let numeroAux;
+        let posicion;
+
+        numeroAux = tabla.rows[2].cells[0].getHTML();
+
+        for (posicion = 1; posicion < 10; posicion ++)
+        {
+            console.log("numeroAux es: "+ numeroAux + " y el numero actual es: "+tabla.rows[2].cells[posicion].getHTML());
+            if (parseInt(numeroAux) < parseInt(tabla.rows[2].cells[posicion].getHTML()))
+            {
+                posicionFinal = posicion;
+                numeroAux = tabla.rows[2].cells[posicion].getHTML();
+            }
+        }
+        tabla.rows[2].cells[posicionFinal].style.backgroundColor = "lightgreen";
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 61_7</title>
+</head>
+<body>
+<h1>Dado una secuencia de números leidos y almacenados en un arreglo A mostrar dichos números en orden</h1>
+<table >
+    <tr>
+        <td>
+            Ingresa el número
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="number" onkeypress="ordenarArreglo(event)" id="inputNumero"></input>
+        </td>
+    </tr>
+    <tr>
+        <table id="tablaNumerosOrdenados">
+            <tr>
+            </tr>
+        </table>
+    </tr>
+</table>
+</body>
+</html>
+
+<script type="text/javascript">
+    var arregloNumeros = [];
+    var inputNumero = document.getElementById("inputNumero");
+    var tablaNumerosOrdenados = document.getElementById("tablaNumerosOrdenados");
+    var tamanoArregloNumeros = 0;
+    var auxNumero = 0, auxNumero2 = 0;
+
+    function ordenarArreglo(event)
+    {
+        let i;
+        if (event.key === "Enter")
+        {
+            if (tamanoArregloNumeros == 0)
+            {
+                arregloNumeros.push(parseInt(inputNumero.value));
+                tamanoArregloNumeros++;
+                agregarAtabla();
+                return;
+            }
+            else
+                auxNumero = parseInt(inputNumero.value);
+
+
+            tamanoArregloNumeros++;
+
+            for (i = 0; i < tamanoArregloNumeros; i++)
+            {
+                if (auxNumero > arregloNumeros[i])
+                {
+                    auxNumero2 = arregloNumeros[i];
+                    arregloNumeros[i] = auxNumero;
+                    auxNumero = auxNumero2;
+                }
+                if (i == (tamanoArregloNumeros-1))
+                    arregloNumeros.push(auxNumero)
+            }
+
+            agregarAtabla();
+        }
+    }
+
+    function agregarAtabla()
+    {
+        tablaNumerosOrdenados.rows[0].insertCell();
+        for (i = 0; i < tamanoArregloNumeros; i++)
+        {
+            tablaNumerosOrdenados.rows[0].cells[i].innerHTML = arregloNumeros[i];
+        }
+    }
+</script>

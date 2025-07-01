@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 61_1</title>
+</head>
+<body>
+    <h1>Leer un n&uacute;mero y mostrar si dicho n&uacute;mero es o no es par</h1>
+    <script type="text/javascript">
+        function esPar()
+        {
+            let inputNumberAux = document.getElementById("introduceNumber");
+            let modulo = (inputNumberAux.value) % 2;
+            let h1Numero = document.getElementById("labelNumero");
+            if (!modulo)
+                h1Numero.textContent = "El número es par";
+            else
+                h1Numero.textContent = "El número no es par";
+        }
+    </script>
+    <input type="number" id="introduceNumber" placeholder="0" oninput="esPar()">
+    <h1 id="labelNumero">El n&uacute;mero es par</h1>
+</body>
+</html>

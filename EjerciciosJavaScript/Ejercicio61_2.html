@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 61_2</title>
+</head>
+<body>
+    <h1>Leer un número y mostrar su tabla de multiplicar</h1>
+    <script type="text/javascript">
+        function generarTablaDeMultiplicar()
+        {
+            let numeroInput = document.getElementById("introduceNumber").value;
+            let tablaMultiplicar = document.getElementById("tablaMultiplicar");
+
+            let fila, columna;
+
+            if (numeroInput == "")
+                tablaMultiplicar.style.visibility = "hidden";
+            else
+            {
+                tablaMultiplicar.style.visibility = "visible";
+                for (fila = 1; fila <= 10; fila++)
+                {
+                    for (columna = 1; columna <= 2; columna++)
+                    {
+                        if (columna == 1)
+                            tablaMultiplicar.rows[fila].cells[columna].innerHTML = "<label typeof='number'>" + numeroInput;
+                        else
+                            tablaMultiplicar.rows[fila].cells[columna].innerHTML = "<label typeof='number'>" + (numeroInput * fila);
+                    }
+                }
+            }
+        }
+
+        function generarTabla()
+        {
+            let fila, columna;
+            let tablaMultiplicar = document.getElementById("tablaMultiplicar");
+            for (fila = 1; fila <= 10; fila++)
+            {
+                tablaMultiplicar.insertRow();
+                for (columna = 1; columna <= 3; columna++)
+                {
+                    console.log(typeof tablaMultiplicar);
+                    tablaMultiplicar.rows[fila].insertCell();
+                    if (columna == 1)
+                        tablaMultiplicar.rows[fila].cells[columna - 1].innerHTML = "<label typeof='number'>" + fila;
+                }
+            }
+        }
+    </script>
+    <h2>Introduzca el número que quiera ver su tabla</h2>
+    <input type="number" id="introduceNumber" oninput="generarTablaDeMultiplicar()">
+    <br>
+    <table id="tablaMultiplicar" style="visibility: hidden" border="1">
+        <tr>
+            <th>Factor</th>
+            <th>Factor</th>
+            <th>Producto</th>
+        </tr>
+        <script type="text/javascript">generarTabla()</script>
+    </table>
+    <h1 id="labelTablaMultiplicar"></h1>
+</body>
+</html>

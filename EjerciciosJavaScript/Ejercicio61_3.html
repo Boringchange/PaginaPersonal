@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 61_3</title>
+</head>
+<body>
+
+<h1>Leer dos números y realizar el producto mediante sumas</h1>
+
+<table border="1">
+    <tr>
+        <td>
+            <label>Primer factor</label>
+        </td>
+        <td>
+            <input type="number" id="primerFactor" oninput="validarEntradasVacias()">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>Segundo factor</label>
+        </td>
+        <td>
+            <input type="number" id="segundoFactor" oninput="validarEntradasVacias()">
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" align="center">Resultado</td>
+    </tr>
+    <tr id="tablaMultiplicacion">
+        <td colspan="2" align="center">
+            <label id="productoLabel">Ingrese datos</label>
+        </td>
+    </tr>
+</table>
+
+<script type="text/javascript">
+    function validarEntradasVacias()
+    {
+        let productoLabel = document.getElementById("productoLabel");
+        let primerFactorInput = document.getElementById("primerFactor");
+        let segundoFactorInput = document.getElementById("segundoFactor");
+
+        if (primerFactorInput.value != "")
+        {
+            if(segundoFactorInput.value != "")
+            {
+                tablaMultiplicacion.style.visibility = "visible";
+                multiplicacion(primerFactorInput, segundoFactorInput, productoLabel);
+            }
+            else
+                productoLabel.innerText = "Ingrese un numero en el factor 2";
+        }
+        else
+            productoLabel.innerText = "Ingrese un numero en el factor 1";
+    }
+    function multiplicacion(primerFactorInput, segundoFactorInput, productoLabel)
+    {
+        let productoAux = 0;
+        let variableFor;
+
+        for (variableFor = 0; variableFor < primerFactorInput.value; variableFor++)
+            productoAux += parseFloat(segundoFactorInput.value);
+        productoLabel.innerText = productoAux.toString();
+    }
+</script>
+
+</body>
+</html>

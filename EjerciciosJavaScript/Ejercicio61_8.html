@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio61_8</title>
+</head>
+<body>
+<h1>Dado una secuencia de textos proporcionados por el usuario visualizar: la longitud, en mayúsculas, en minúsculas, cada uno de ellas.</h1>
+<table>
+    <tr>
+        <td>
+            <textarea id="textArea" oninput="mostrarLetrasContadas(event)">
+
+            </textarea>
+        </td>
+    </tr>
+    <tr>
+        <td>Número minusculas: <l id="contadorMin"></l> </td>
+    </tr>
+    <tr>
+        <td>Número mayusculas: <l id="contadorMay"></l> </td>
+    </tr>
+</table>
+</body>
+</html>
+
+<script type="text/javascript">
+    const textArea = document.getElementById("textArea");
+    const contMin = document.getElementById("contadorMin");
+    const contMay = document.getElementById("contadorMay");
+    var arregloTexto;
+    var i, contadoMay = 0, contadoMin = 0;
+    function mostrarLetrasContadas (event)
+    {
+        arregloTexto = textArea.value;
+
+
+        if (arregloTexto.length <= 13)
+        {
+            contadoMay = 0;
+            contadoMin = 0;
+        }
+        else
+        {
+            contadoMay = 0;
+            contadoMin = 0;
+
+            for (i = 0; i < arregloTexto.length - 13; i++)
+            {
+                if ( arregloTexto.charAt(i) === " " || arregloTexto.charAt(i) === "," || arregloTexto.charAt(i) === "."|| arregloTexto.charAt(i) === "\n")
+                    continue;
+                if (arregloTexto.charAt(i).toUpperCase() === arregloTexto.charAt(i))
+                    contadoMay += 1;
+                else
+                    contadoMin += 1;
+            }
+        }
+
+        if (event.key === "Backspace" || event.key === "Delete")
+        {
+            contadoMay = 0;
+            contadoMin = 0;
+            for (i = 0; i < arregloTexto.length - 13; i++)
+            {
+                if ( arregloTexto.charAt(i) === " " || arregloTexto.charAt(i) === "," || arregloTexto.charAt(i) === "."|| arregloTexto.charAt(i) === "\n")
+                    continue;
+                if (arregloTexto.charAt(i).toUpperCase() === arregloTexto.charAt(i) && arregloTexto.charAt(i) !== " ")
+                    contadoMay += 1;
+                else
+                    contadoMin += 1;
+            }
+        }
+
+        contMin.innerHTML = contadoMin.toString();
+        contMay.innerHTML = contadoMay.toString();
+    }
+</script>

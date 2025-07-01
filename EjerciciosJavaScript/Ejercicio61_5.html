@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 61+5</title>
+</head>
+<body>
+<h1>Dado dos vectores A y B de n elementos cada uno, obtener un arreglo C donde la posición u se almacene la suma A[i] + B[i]</h1>
+<table border="2" id="tablaSuma">
+  <tr>
+    <td colspan="10" align="center">Posición</td>
+  </tr>
+  <tr>
+    <script type="text/javascript">
+      let i;
+      for(i=1; i<11; i++)
+        document.write("<td>"+ i +"</td>");
+    </script>
+  </tr>
+  <tr>
+    <td colspan="10" align="center">Arreglo 1</td>
+  </tr>
+  <tr>
+    <script type="text/javascript">
+
+      var numeros = [];
+
+      for(i=0; i<10; i++)
+        numeros[i] = Math.floor(Math.random() * 11);
+
+      for(i=0; i<10; i++)
+        document.write("<td>"+ numeros[i] +"</td>");
+    </script>
+  </tr>
+  <tr>
+    <td colspan="10" align="center">Arreglo 2</td>
+  </tr>
+  <tr>
+    <script type="text/javascript">
+
+      var numeros = [];
+
+      for(i=0; i<10; i++)
+        numeros[i] = Math.floor(Math.random() * 11);
+
+      for(i=0; i<10; i++)
+        document.write("<td>"+ numeros[i] +"</td>");
+    </script>
+  </tr>
+  <tr>
+    <td colspan="10" align="center">Resultado</td>
+  </tr>
+  <tr>
+    <script type="text/javascript">
+      let tabla = document.getElementById("tablaSuma");
+
+      for(i=0; i<10; i++)
+        document.write("<td>"+ ((parseInt(tabla.rows[3].cells[i].getHTML())) + (parseInt(tabla.rows[5].cells[i].getHTML()))) +"</td>");
+    </script>
+  </tr>
+  <tr>
+    <td colspan="10" align="center">
+      <button onclick="location.reload()">Reiniciar</button>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

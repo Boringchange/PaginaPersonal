@@ -1,0 +1,16 @@
+﻿html, body {
+    height: 100%;
+    margin: 0;
+    background-color: #f8f9fa;
+}
+
+.tab-content iframe {
+    width: 100%;
+    height: calc(100vh - 250px);
+    border: none;
+    margin-top: 1rem;
+}
+
+h1 {
+    color: #0d6efd;
+}

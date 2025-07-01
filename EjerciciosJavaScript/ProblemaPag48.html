@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio Pagina 48</title>
+</head>
+<body>
+    <h1>Obtener los n&uacute;ros pares entre 1 y 100 con la estructura de repetici&oacute;n for</h1>
+    <script type="text/javascript">
+        let i, modulo;
+        for (i = 1; i <= 100; i++)
+        {
+            modulo = i % 2;
+            if (!modulo)
+                document.write(i + ' ');
+        }
+    </script>
+    <h1>Obtener la suma de los primeros 100 n&uacute;meros con la estructura de repetici&oacute;n for</h1>
+    <script type="text/javascript">
+        let suma = 0;
+        for (i = 1; i <= 100; i++)
+            suma = suma + i;
+        document.write("El resultado es: " + suma);
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio61_6</title>
+</head>
+<body>
+<h1>Calcular la media de una secuencia de números proporcionado por el usuario</h1>
+<table>
+    <tr>
+        <td >Ingrese el número y luego presione enter para confirmar el número en la media</td>
+    </tr>
+    <tr>
+        <td>
+            <input type="number" id="inputNumeros" onkeydown="mostrarResultado(event)">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Suma:
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <l id="sumaAcumulada"></l>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Resultado:
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <l id="resultadoLabel"></l>
+        </td>
+    </tr>
+</table>
+<script type="text/javascript">
+    var sumaNumeros = 0;
+    var contadorNumeros = 0;
+    var inputNumeros = document.getElementById("inputNumeros");
+    var resultado;
+    var resultadoLabel = document.getElementById("resultadoLabel");
+    var sumaAcumuladaL = document.getElementById("sumaAcumulada");
+    function mostrarResultado(event)
+    {
+        if(event.key === "Enter")
+        {
+            contadorNumeros++;
+            if(contadorNumeros > 1)
+                sumaAcumuladaL.innerHTML += " + ";
+            sumaAcumuladaL.innerHTML += inputNumeros.value;
+            sumaNumeros += parseInt(inputNumeros.value);
+            resultado = (sumaNumeros / contadorNumeros);
+            resultadoLabel.innerHTML = resultado;
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio Pagina 52</title>
+</head>
+<body>
+    <h1>Obtener los n&uacute;ros pares entre 1 y 100 con la estructura de repetici&oacute;n while</h1>
+    <script type="text/javascript">
+        let i = 1, modulo;
+        while (i <= 100)
+        {
+            modulo = i % 2;
+            if (!modulo)
+                document.write(i + " ");
+            i++;
+        }
+    </script>
+    <h1>Obtener la suma de los primeros 100 n&uacute;meros con la estructura de repetici&oacute;n while</h1>
+    <script type="text/javascript">
+        i = 1;
+        let suma = 0;
+        while (i <= 100)
+            suma += i++;
+        document.write("La suma de los números es: " + suma);
+    </script>
+</body>
+</html>
