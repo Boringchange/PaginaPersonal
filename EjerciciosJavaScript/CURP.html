@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Generador de CURP</title>
+</head>
+<body>
+<h2>Generador de CURP</h2>
+
+<label>Nombre(s):</label><br>
+<input type="text" id="nombre"><br>
+
+<label>Primer apellido:</label><br>
+<input type="text" id="apellido1"><br>
+
+<label>Segundo apellido:</label><br>
+<input type="text" id="apellido2"><br>
+
+<label>Fecha de nacimiento:</label><br>
+<input type="date" id="fecha"><br>
+
+<label>Sexo (H/M):</label><br>
+<input type="text" id="sexo" maxlength="1"><br>
+
+<label>Estado de nacimiento (clave de 2 letras, ej: DF, MC, NL):</label><br>
+<input type="text" id="estado" maxlength="2"><br><br>
+
+<button onclick="generarCURP()">Generar CURP</button>
+
+<p id="resultado"></p>
+
+<script>
+  function quitarArticulos(cadena) {
+    return cadena.replace(/^(DE(L)? |LA |LOS |LAS )/gi, "").trim();
+  }
+
+  function generarCURP() {
+    const nombre = quitarArticulos(document.getElementById("nombre").value.trim().toUpperCase());
+    const apellido1 = quitarArticulos(document.getElementById("apellido1").value.trim().toUpperCase());
+    const apellido2 = quitarArticulos(document.getElementById("apellido2").value.trim().toUpperCase());
+    const fecha = document.getElementById("fecha").value;
+    const sexo = document.getElementById("sexo").value.trim().toUpperCase();
+    const estado = document.getElementById("estado").value.trim().toUpperCase();
+
+    if (!nombre || !apellido1 || !apellido2 || !fecha || !sexo || !estado) {
+      document.getElementById("resultado").innerText = "⚠️ Completa todos los campos.";
+      return;
+    }
+
+    let curp = "";
+    curp += apellido1.charAt(0);
+    curp += primeraVocalInterna(apellido1);
+    curp += apellido2.charAt(0);
+    curp += nombre.charAt(0);
+
+    // Fecha de nacimiento segura
+    const [anio, mes, dia] = fecha.split("-");
+    const año = anio.slice(-2);
+    curp += año + mes + dia;
+
+    curp += sexo;
+    curp += estado;
+
+    curp += primeraConsonanteInterna(apellido1);
+    curp += primeraConsonanteInterna(apellido2);
+    curp += primeraConsonanteInterna(nombre);
+
+    document.getElementById("resultado").innerText = "CURP generada: " + curp;
+  }
+
+  function primeraVocalInterna(cadena) {
+    for (let i = 1; i < cadena.length; i++) {
+      const c = cadena.charAt(i);
+      if ("AEIOU".includes(c)) return c;
+    }
+    return "X";
+  }
+
+  function primeraConsonanteInterna(cadena) {
+    for (let i = 1; i < cadena.length; i++) {
+      const c = cadena.charAt(i);
+      if (!"AEIOU".includes(c) && /[A-Z]/.test(c)) return c;
+    }
+    return "X";
+  }
+</script>
+</body>
+</html>
